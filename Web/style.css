@@ -1,15 +1,18 @@
-.navbar{
-    display: flex;
-    flex-direction: column;   
-    color: beige;
-    padding: 10px 20px;
+.navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    z-index: 100;
-     background-color: rgba(2, 43, 20, 0.65);
+     display: flex;             
+    flex-direction: column; 
+    background-color: rgba(2, 43, 20, 0.65);
     backdrop-filter: blur(8px);
+    z-index: 100;
+}
+.nav-top {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 10px 20px;
 }
 * {
     box-sizing: border-box;
@@ -49,14 +52,10 @@
 .nav-links a:hover {
     color: #b63b0b;
 }
-.cart-icon {
-    color: white;
-    font-size: 20px;
-    text-decoration:none;
-}
+
 body {
     padding-top: 130px;
-    background-image: url("images/hero/background.png");
+    background-image: url(images/hero/background.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -66,22 +65,29 @@ body.checkout-page {
     background-image: none;
     background-color: #f6f6f6;
 }
-.nav-top {
-    display: grid;
-    align-items: center;
-     grid-template-columns: auto 1fr auto;
-     width: 100%;
-}
 .nav-icons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  z-index: 500; 
+  position: relative;
 }
 .profile-icon,
 .cart-icon {
-    font-size: 20px;
-    color: white;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+.cart-icon span {
+  font-size: 14px;
+  background: #b63b0b;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 50%;
 }
 .profile-icon:hover,
 .cart-icon:hover {
@@ -108,9 +114,10 @@ body.checkout-page {
     position: relative;
 }
 .nav-bottom {
-     width: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 10px;
     margin-top: 10px;
 }
 
@@ -124,13 +131,14 @@ body.checkout-page {
 
 .hero-section {
     height: 80vh;
-    background-image: url("images/hero.jpg"); 
+    background-image: none; 
     background-size: cover;
     background-position: center;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+  
 }
 
 .hero-overlay {
@@ -512,4 +520,141 @@ html, body {
   pointer-events: none;
   cursor: not-allowed;
 }
+.profile-icon {
+  position: relative;
+}
 
+.profile-icon::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #b63b0b;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.profile-icon:hover::after {
+  width: 60%;
+  left: 20%;
+}
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.auth-modal.show {
+  display: flex;
+}
+
+.auth-box {
+  background: #fdfdfb;
+  width: 380px;
+  padding: 35px;
+  border-radius: 14px;
+  position: relative;
+  text-align: center;
+}
+
+.auth-box h2 {
+  margin-bottom: 20px;
+  color: #022b14;
+  font-family: "Playfair Display", serif;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background: #022b14;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  background: #034d25;
+}
+
+.auth-close {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.auth-switch {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.auth-switch span {
+  color: #b63b0b;
+  cursor: pointer;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .nav-top {
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+  }
+ .nav-center {
+    flex: 1;
+    order: 2; 
+  }
+
+  .nav-icons {
+    gap: 12px;
+    order: 3; 
+  }
+
+  .cart-icon i,
+  .profile-icon i {
+    font-size: 18px; 
+  }
+  .search-bar {
+    width: 140px; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .nav-top {
+    grid-template-columns: 1fr auto; 
+  }
+
+  .nav-center {
+    display: none; 
+  }
+
+  .nav-icons {
+    gap: 10px;
+  }
+
+  .cart-icon i,
+  .profile-icon i {
+    font-size: 16px;
+  }
+}
+main {
+    padding-top: 160px;
+}
