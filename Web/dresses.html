@@ -21,9 +21,14 @@
             class="search-bar"
             aria-label="Search products">
             </div>
-        <div class="nav-icons">
-            <a href="cart.html" class="cart-icon">🛒</a>
-            <a href="#" class="profile-icon">👤</a>
+       <div class="nav-icons">
+    <a href="cart.html" class="icon cart-icon" aria-label="Cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span id="cartCount">0</span>
+    </a>
+      <button type="button" class="profile-icon" id="profileToggle" aria-label="Account">
+<i class="fa-regular fa-user"></i>
+</button>
     </div>
     </div>
     <div class="nav-bottom">
@@ -93,9 +98,28 @@
     </div>
 
     <p class="footer-bottom">
-        © 2025 Sharlet Lifestyle. All rights reserved.
+        © 2026 Sharlet Lifestyle. All rights reserved.
     </p>
 </footer>
+<div class="auth-modal" id="authModal">
+  <div class="auth-box">
+    <button class="auth-close" id="closeAuth">&times;</button>
+
+    <h2 id="authTitle">Login</h2>
+
+    <form id="authForm">
+      <input type="email" id="authEmail" placeholder="Email address" required>
+      <input type="password" id="authPassword" placeholder="Password" required>
+
+      <button type="submit" class="auth-btn">Login</button>
+    </form>
+
+    <p class="auth-switch">
+      Don’t have an account?
+      <span id="switchAuth">Register</span>
+    </p>
+  </div>
+</div>
 <script src="products.js"></script>
 <script src="shop.js"></script>
 <script src="script.js"></script>

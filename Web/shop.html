@@ -54,7 +54,25 @@
         © 2025 Sharlet Lifestyle. All rights reserved.
     </p>
 </footer>
+<div class="auth-modal" id="authModal">
+  <div class="auth-box">
+    <button class="auth-close" id="closeAuth">&times;</button>
 
+    <h2 id="authTitle">Login</h2>
+
+    <form id="authForm">
+      <input type="email" id="authEmail" placeholder="Email address" required>
+      <input type="password" id="authPassword" placeholder="Password" required>
+
+      <button type="submit" class="auth-btn">Login</button>
+    </form>
+
+    <p class="auth-switch">
+      Don’t have an account?
+      <span id="switchAuth">Register</span>
+    </p>
+  </div>
+</div>
 <script src="products.js"></script>
 <script src="shop.js"></script>
 <script src="script.js"></script>
