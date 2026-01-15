@@ -1,63 +1,69 @@
-document.addEventListener("DOMContentLoaded", function () { 
-const profileToggle = document.getElementById("profileToggle");
-const authModal = document.getElementById("authModal");
-const closeAuth = document.getElementById("closeAuth");
-const switchAuth = document.getElementById("switchAuth");
-const authTitle = document.getElementById("authTitle");
-const authForm = document.getElementById("authForm");
-const authBtn = authForm.querySelector("button");
+document.addEventListener("DOMContentLoaded", () => {
 
-let isLogin = true;
 
-profileToggle?.addEventListener("click", (e) => {
-  e.preventDefault();
-  authModal.classList.add("show");
-});
+  const profileToggle = document.getElementById("profileToggle");
+  const authModal = document.getElementById("authModal");
+  const closeAuth = document.getElementById("closeAuth");
+  const switchAuth = document.getElementById("switchAuth");
+  const authTitle = document.getElementById("authTitle");
+  const authForm = document.getElementById("authForm");
+  const authBtn = authForm?.querySelector("button");
 
-closeAuth.addEventListener("click", () => {
-  authModal.classList.remove("show");
-});
+  let isLogin = true;
 
-authModal.addEventListener("click", (e) => {
-  if (e.target === authModal) {
+  profileToggle?.addEventListener("click", (e) => {
+    e.preventDefault();
+    authModal.classList.add("show");
+  });
+
+  closeAuth?.addEventListener("click", () => {
     authModal.classList.remove("show");
-  }
-});
+  });
 
-switchAuth.addEventListener("click", () => {
-  isLogin = !isLogin;
+  authModal?.addEventListener("click", (e) => {
+    if (e.target === authModal) {
+      authModal.classList.remove("show");
+    }
+  });
 
-  authTitle.textContent = isLogin ? "Login" : "Register";
-  authBtn.textContent = isLogin ? "Login" : "Create Account";
-  switchAuth.textContent = isLogin ? "Register" : "Login";
-});
+  switchAuth?.addEventListener("click", () => {
+    isLogin = !isLogin;
 
-authForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+    authTitle.textContent = isLogin ? "Login" : "Register";
+    authBtn.textContent = isLogin ? "Login" : "Create Account";
+    switchAuth.textContent = isLogin ? "Register" : "Login";
+  });
 
-  alert(isLogin ? "Logged in (demo)" : "Account created (demo)");
-  authModal.classList.remove("show");
-});
+  authForm?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert(isLogin ? "Logged in (demo)" : "Account created (demo)");
+    authModal.classList.remove("show");
+  });
 
-  const toggle = document.getElementById("categoriesToggle");
-  const menu = document.getElementById("categoriesMenu");
+ 
 
-  if (toggle && menu) {
-    const arrow = toggle.querySelector(".arrow");
+  const categoriesToggle = document.getElementById("categoriesToggle");
+  const categoriesMenu = document.getElementById("categoriesMenu");
+  const arrow = categoriesToggle?.querySelector(".arrow");
 
-    toggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      menu.classList.toggle("show");
-      arrow.classList.toggle("rotate");
-    });
+  categoriesToggle?.addEventListener("click", (e) => {
+    e.preventDefault();
+    categoriesMenu.classList.toggle("show");
+    arrow.classList.toggle("rotate");
+  });
 
-    document.addEventListener("click", function (e) {
-      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove("show");
-        arrow.classList.remove("rotate");
-      }
-    });
-  }
+  document.addEventListener("click", (e) => {
+    if (
+      categoriesToggle &&
+      !categoriesToggle.contains(e.target) &&
+      !categoriesMenu.contains(e.target)
+    ) {
+      categoriesMenu.classList.remove("show");
+      arrow?.classList.remove("rotate");
+    }
+  });
+
+ 
 
   function getCart() {
     return JSON.parse(localStorage.getItem("cart")) || [];
@@ -67,69 +73,48 @@ authForm.addEventListener("submit", (e) => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
- 
   function updateCartCount() {
     const countEl = document.getElementById("cartCount");
-    if (countEl) {
-      countEl.textContent = getCart().length;
-    }
+    if (countEl) countEl.textContent = getCart().length;
   }
 
   updateCartCount();
 
- 
-  document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("add-to-cart")) {
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".add-to-cart");
+    if (!btn) return;
 
-      const productId = e.target.dataset.id;
-      const cart = getCart();
+    const productId = btn.dataset.id;
+    const cart = getCart();
 
-      cart.push(productId);
-      saveCart(cart);
-      updateCartCount();
+    cart.push(productId);
+    saveCart(cart);
+    updateCartCount();
 
-      e.target.textContent = "Added ✓";
-      e.target.disabled = true;
+    btn.textContent = "Added ✓";
+    btn.disabled = true;
 
-      showToast("Item added to cart");
-    }
+    showToast("Item added to cart");
   });
 
- 
   function showToast(message) {
     const toast = document.createElement("div");
     toast.textContent = message;
 
-    toast.style.position = "fixed";
-    toast.style.bottom = "20px";
-    toast.style.right = "20px";
-    toast.style.background = "#022b14";
-    toast.style.color = "white";
-    toast.style.padding = "10px 16px";
-    toast.style.borderRadius = "6px";
-    toast.style.zIndex = "9999";
+    Object.assign(toast.style, {
+      position: "fixed",
+      bottom: "20px",
+      right: "20px",
+      background: "#022b14",
+      color: "#fff",
+      padding: "10px 16px",
+      borderRadius: "6px",
+      zIndex: "9999",
+      fontSize: "14px"
+    });
 
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 2000);
   }
-  profileToggle = document.getElementById("profileToggle");
-  const profileMenu = document.getElementById("profileMenu");
-  const arrow = profileToggle.querySelector(".arrow");
 
-  profileToggle.addEventListener("click", () => {
-    profileMenu.classList.toggle("show");
-    
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!profileToggle.contains(e.target) && !profileMenu.contains(e.target)) {
-      profileMenu.classList.remove("show");
-    
-    }
-    });
-    document.addEventListener("click", (e) => {
-  if (!profileToggle.contains(e.target) && !profileMenu.contains(e.target)) {
-    profileMenu.classList.remove("show");
-  }
-});
 });

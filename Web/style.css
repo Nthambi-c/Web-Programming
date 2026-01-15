@@ -614,47 +614,32 @@ html, body {
 }
 @media (max-width: 768px) {
   .nav-top {
-    grid-template-columns: auto 1fr auto;
-    gap: 10px;
-  }
- .nav-center {
-    flex: 1;
-    order: 2; 
+    flex-wrap: wrap;
   }
 
-  .nav-icons {
-    gap: 12px;
-    order: 3; 
-  }
-
-  .cart-icon i,
-  .profile-icon i {
-    font-size: 18px; 
-  }
-  .search-bar {
-    width: 140px; 
-  }
-}
-
-
-@media (max-width: 480px) {
-  .nav-top {
-    grid-template-columns: 1fr auto; 
+  .logo {
+    width: 100%;
+    text-align: center;
   }
 
   .nav-center {
-    display: none; 
+    width: 100%;
   }
 
   .nav-icons {
-    gap: 10px;
+    width: 100%;
+    justify-content: center;
   }
 
-  .cart-icon i,
-  .profile-icon i {
-    font-size: 16px;
+  .nav-bottom {
+    overflow-x: auto;
   }
-}
-main {
-    padding-top: 160px;
+
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 10px;
+    flex-wrap: wrap;
+  }
 }
