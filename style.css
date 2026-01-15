@@ -613,8 +613,15 @@ html, body {
   font-weight: 600;
 }
 @media (max-width: 768px) {
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    overflow: visible;
+  }
   .nav-top {
     flex-wrap: wrap;
+    overflow: visible;
   }
 
   .logo {
@@ -632,7 +639,7 @@ html, body {
   }
 
   .nav-bottom {
-    overflow-x: auto;
+    overflow-x: visible;
   }
 
   .nav-links {
@@ -641,5 +648,14 @@ html, body {
     gap: 16px;
     padding: 10px;
     flex-wrap: wrap;
+  }
+   .dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    z-index: 10000;
+    background: #042002;
   }
 }
