@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded",() => {
 
   const profileToggle = document.getElementById("profileToggle");
   const authModal = document.getElementById("authModal");
-  const closeAuth = document.getElementById("closeAuth"g);
+  const closeAuth = document.getElementById("closeAuth");
   const switchAuth = document.getElementById("switchAuth");
   const authTitle = document.getElementById("authTitle");
   const authForm = document.getElementById("authForm");
